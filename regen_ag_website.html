@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Viva Costa Rica - Regenerative Agriculture Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #16a085, #27ae60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #16a085;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(22, 160, 133, 0.9), rgba(39, 174, 96, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2316a085" width="1200" height="800"/><path fill="%2327ae60" d="M0 400c200-100 400 100 600 0s400-100 600 0v400H0z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #16a085;
+            transform: translateY(-2px);
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #16a085, #27ae60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Triple Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* Innovation Section */
+        .innovation {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #16a085;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #16a085, #27ae60);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* Location Section */
+        .location {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .location-content {
+            text-align: center;
+        }
+
+        .location-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1abc9c;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #16a085, #27ae60);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #16a085;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+            50% { transform: translateY(-20px) rotateZ(180deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Terra Viva CR</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Project</a></li>
+                <li><a href="#science">Science</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#visit">Visit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="particles">
+                <div class="particle" style="left: 20%; top: 20%; width: 10px; height: 10px; animation-delay: 0s;"></div>
+                <div class="particle" style="left: 80%; top: 30%; width: 15px; height: 15px; animation-delay: 2s;"></div>
+                <div class="particle" style="left: 60%; top: 70%; width: 8px; height: 8px; animation-delay: 4s;"></div>
+                <div class="particle" style="left: 30%; top: 80%; width: 12px; height: 12px; animation-delay: 1s;"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Where Innovation Meets Tradition</h1>
+                <p class="hero-subtitle">Regenerative Agriculture in Paradise - Costa Rica's Most Advanced Sustainable Farm</p>
+                <a href="#about" class="cta-button">Discover the Future of Farming</a>
+            </div>
+        </section>
+
+        <section id="about" class="container fade-in">
+            <h2 class="section-title">The Triple Impact Revolution</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                On 9 hectares near Santa Teresa, Guanacaste, we're proving that regenerative agriculture isn't just sustainable—it's profitable, innovative, and essential for our planet's future.
+            </p>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">🌍</div>
+                    <h3>For the Planet</h3>
+                    <p>Sequestering carbon, enhancing biodiversity, and restoring soil health through rotational grazing and chemical-free farming practices.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">👨‍🌾</div>
+                    <h3>For Farmers</h3>
+                    <p>Demonstrating profitable regenerative practices while preserving local culture and empowering Costa Rican farming communities.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🥗</div>
+                    <h3>For People</h3>
+                    <p>Producing nutrient-dense, chemical-free food while creating an educational hub for sustainable agriculture innovation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="science" class="innovation fade-in">
+            <div class="container">
+                <h2 class="section-title">Making Regenerative Agriculture Sexy</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                    Cutting-edge technology meets time-tested wisdom
+                </p>
+                
+                <div class="tech-features">
+                    <div class="tech-card">
+                        <div class="tech-icon">🧬</div>
+                        <h3>eDNA Soil Analysis</h3>
+                        <p>Nanopore sequencing reveals soil microbiome health in real-time</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🔄</div>
+                        <h3>Smart Rotational Grazing</h3>
+                        <p>GPS-tracked livestock optimization for maximum soil regeneration</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🦗</div>
+                        <h3>Insect Protein Feed</h3>
+                        <p>Revolutionary egg production using sustainable insect-based nutrition</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">♻️</div>
+                        <h3>Biowaste Cycling</h3>
+                        <p>Complete nutrient loop with zero waste systems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="container fade-in">
+            <h2 class="section-title">Meet the Innovators</h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">L</div>
+                    <h3>Lorenz Reichlin</h3>
+                    <p><strong>Visionary Farmer</strong></p>
+                    <p>From Schwyz, Switzerland. Founder of Capital4Locals, passionate about preserving Costa Rican culture while introducing sustainable innovations. "Make farming cool again!"</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">S</div>
+                    <h3>Simona Weber</h3>
+                    <p><strong>Sustainability Expert</strong></p>
+                    <p>UNEP FI professional bringing financial sustainability expertise and international perspective to regenerative agriculture scaling and implementation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="location fade-in">
+            <div class="container">
+                <div class="location-content">
+                    <h2 class="section-title" style="color: white;">Prime Location, Maximum Impact</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 3rem;">
+                        Strategically located on the Guanacaste Peninsula, minutes from world-famous Santa Teresa
+                    </p>
+                    
+                    <div class="location-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">9</div>
+                            <p>Hectares of Innovation</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">5min</div>
+                            <p>From Santa Teresa</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <p>Chemical-Free</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">365</div>
+                            <p>Days of Growing Season</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section fade-in">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Join the Regenerative Revolution</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Experience the future of farming. Learn, contribute, and be part of the change.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Book Farm Tour</a>
+                    <a href="#" class="btn btn-secondary">Partner With Us</a>
+                    <a href="#" class="btn btn-secondary">Join Newsletter</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Terra Viva Costa Rica. Making regenerative agriculture cool, one hectare at a time.</p>
+            <p>📍 Guanacaste Peninsula, Costa Rica | Near Santa Teresa & Cobano</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Add more particles dynamically
+        const particlesContainer = document.querySelector('.particles');
+        for (let i = 0; i < 10; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
