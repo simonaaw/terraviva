@@ -473,12 +473,17 @@
     </header>
 
     <section id="home" class="hero">
-        <!-- Video Background -->
-        <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Video Background Option 1: Direct MP4 -->
+        <video class="hero-video" autoplay muted loop playsinline style="display: none;" id="localVideo">
             <source src="your-farm-video.mp4" type="video/mp4">
             <source src="your-farm-video.webm" type="video/webm">
-            <!-- Fallback will show if video doesn't load -->
         </video>
+        
+        <!-- Video Background Option 2: YouTube Embed -->
+        <iframe class="hero-video" id="youtubeVideo" style="display: none;"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
         
         <!-- Fallback background for when video is unavailable -->
         <div class="hero-fallback"></div>
@@ -694,6 +699,27 @@
     </footer>
 
     <script>
+        // Video setup - Choose your method
+        const localVideo = document.getElementById('localVideo');
+        const youtubeVideo = document.getElementById('youtubeVideo');
+        
+        // METHOD 1: Use local MP4 file (uncomment this if you upload MP4 to your server)
+        // localVideo.style.display = 'block';
+        
+        // METHOD 2: Use YouTube video (uncomment this if you want to use YouTube)
+        // youtubeVideo.style.display = 'block';
+        
+        // Auto-detect which video to show
+        if (localVideo) {
+            localVideo.addEventListener('canplay', () => {
+                localVideo.style.display = 'block';
+            });
+            localVideo.addEventListener('error', () => {
+                // If local video fails, you could show YouTube as backup
+                console.log('Local video failed to load, showing fallback background');
+            });
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
