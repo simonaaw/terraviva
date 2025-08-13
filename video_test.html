@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test - Finca Botón de Oro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: white;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #333;
+            margin: 20px 0;
+            border: 2px solid #fff;
+        }
+        
+        .test-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .status {
+            background: #222;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #00ff00;
+        }
+        
+        .error {
+            border-left-color: #ff0000;
+        }
+        
+        .controls {
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background: #005a99;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎥 Finca Botón de Oro - Video Test Page</h1>
+        
+        <div class="status" id="status">
+            Testing video: your-farm-video.mp4
+        </div>
+        
+        <div class="controls">
+            <button onclick="testVideoLoad()">Test Video Load</button>
+            <button onclick="playVideo()">Play Video</button>
+            <button onclick="pauseVideo()">Pause Video</button>
+            <button onclick="showVideoInfo()">Show Video Info</button>
+        </div>
+        
+        <!-- Test 1: Basic video with controls -->
+        <h3>Test 1: Video with Controls (Manual Play)</h3>
+        <div class="video-container">
+            <video 
+                id="testVideo1" 
+                class="test-video" 
+                controls 
+                preload="metadata"
+                onloadstart="log('Video 1: Load started')"
+                onloadedmetadata="log('Video 1: Metadata loaded')"
+                onloadeddata="log('Video 1: Data loaded')"
+                oncanplay="log('Video 1: Can play')"
+                onplay="log('Video 1: Playing')"
+                onerror="logError('Video 1: Error', event)"
+            >
+                <source src="your-farm-video.mp4" type="video/mp4">
+                <source src="your-farm-video.webm" type="video/webm">
+                Video not supported
+            </video>
+        </div>
+        
+        <!-- Test 2: Autoplay video (no controls) -->
+        <h3>Test 2: Autoplay Video (Background Style)</h3>
+        <div class="video-container">
+            <video 
+                id="testVideo2" 
+                class="test-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                onloadstart="log('Video 2: Load started')"
+                onloadedmetadata="log('Video 2: Metadata loaded')"
+                onloadeddata="log('Video 2: Data loaded')"
+                oncanplay="log('Video 2: Can play')"
+                onplay="log('Video 2: Playing')"
+                onerror="logError('Video 2: Error', event)"
+            >
+                <source src="your-farm-video.mp4" type="video/mp4">
+                Video not supported
+            </video>
+        </div>
+        
+        <!-- Test 3: Direct link test -->
+        <h3>Test 3: Direct Link Test</h3>
+        <div class="status">
+            <a href="your-farm-video.mp4" target="_blank" style="color: #00ff00;">
+                Click here to test direct video access
+            </a>
+        </div>
+        
+        <div id="logs" style="background: #111; padding: 20px; margin: 20px 0; max-height: 300px; overflow-y: scroll;">
+            <h4>Debug Logs:</h4>
+            <div id="logContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        let logCount = 0;
+        
+        function log(message) {
+            logCount++;
+            const logContent = document.getElementById('logContent');
+            const timestamp = new Date().toLocaleTimeString();
+            logContent.innerHTML += `<div>${logCount}. [${timestamp}] ${message}</div>`;
+            console.log(message);
+            
+            // Auto scroll to bottom
+            document.getElementById('logs').scrollTop = document.getElementById('logs').scrollHeight;
+        }
+        
+        function logError(message, event) {
+            const errorMsg = `${message} - ${event.target.error ? event.target.error.message : 'Unknown error'}`;
+            log(`❌ ${errorMsg}`);
+            document.getElementById('status').className = 'status error';
+            document.getElementById('status').textContent = errorMsg;
+        }
+        
+        function testVideoLoad() {
+            const video1 = document.getElementById('testVideo1');
+            const video2 = document.getElementById('testVideo2');
+            
+            log('🔄 Starting video load test...');
+            
+            video1.load();
+            video2.load();
+            
+            log('Load() called on both videos');
+        }
+        
+        function playVideo() {
+            const video1 = document.getElementById('testVideo1');
+            log('▶️ Attempting to play video 1...');
+            
+            video1.play().then(() => {
+                log('✅ Video 1 playing successfully');
+            }).catch(error => {
+                log(`❌ Video 1 play failed: ${error.message}`);
+            });
+        }
+        
+        function pauseVideo() {
+            const video1 = document.getElementById('testVideo1');
+            video1.pause();
+            log('⏸️ Video 1 paused');
+        }
+        
+        function showVideoInfo() {
+            const video1 = document.getElementById('testVideo1');
+            
+            log('📊 Video Information:');
+            log(`   - Ready State: ${video1.readyState}`);
+            log(`   - Network State: ${video1.networkState}`);
+            log(`   - Current Src: ${video1.currentSrc}`);
+            log(`   - Duration: ${video1.duration}`);
+            log(`   - Video Width: ${video1.videoWidth}`);
+            log(`   - Video Height: ${video1.videoHeight}`);
+            log(`   - Paused: ${video1.paused}`);
+            log(`   - Muted: ${video1.muted}`);
+        }
+        
+        // Auto-start logging
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Page loaded, starting video tests...');
+            
+            // Test if the video file exists
+            fetch('your-farm-video.mp4', { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        log('✅ Video file exists and is accessible');
+                    } else {
+                        log(`❌ Video file returned status: ${response.status}`);
+                    }
+                })
+                .catch(error => {
+                    log(`❌ Video file fetch error: ${error.message}`);
+                });
+            
+            setTimeout(testVideoLoad, 1000);
+        });
+    </script>
+</body>
+</html>
