@@ -82,7 +82,7 @@
             color: var(--light-green);
         }
 
-        /* Hero Section with Enhanced Video */
+        /* Hero Section with Video */
         .hero {
             height: 100vh;
             display: flex;
@@ -98,8 +98,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: -2;
@@ -464,20 +464,6 @@
         .fade-in {
             animation: fadeInUp 0.8s ease-out;
         }
-
-        /* Video debug indicator (remove in production) */
-        .video-status {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 9999;
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -497,11 +483,8 @@
         </nav>
     </header>
 
-    <!-- Video status indicator for debugging -->
-    <div class="video-status" id="videoStatus">Video Loading...</div>
-
     <section id="home" class="hero">
-        <!-- Enhanced Farm Video Background -->
+        <!-- Farm Video Background - Using Working Code from Test -->
         <video 
             class="hero-video" 
             autoplay 
@@ -510,18 +493,15 @@
             playsinline 
             preload="auto" 
             id="farmVideo"
-            poster=""
         >
             <source src="your-farm-video.mp4" type="video/mp4">
-            <source src="your-farm-video.webm" type="video/webm">
-            <source src="your-farm-video.mov" type="video/quicktime">
             Your browser does not support the video tag.
         </video>
         
-        <!-- Beautiful fallback background -->
+        <!-- Fallback background -->
         <div class="hero-fallback"></div>
         
-        <!-- Optimized overlay for text readability -->
+        <!-- Overlay for text readability -->
         <div class="hero-overlay"></div>
         
         <div class="container">
@@ -765,89 +745,80 @@
     </footer>
 
     <script>
-        // Enhanced Video Setup with Debugging
+        // Simple Video Setup - Using Working Code from Test
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('farmVideo');
-            const statusIndicator = document.getElementById('videoStatus');
-            
-            function updateStatus(message) {
-                statusIndicator.textContent = message;
-                statusIndicator.style.display = 'block';
-                console.log(message);
-                
-                // Hide status after 5 seconds
-                setTimeout(() => {
-                    statusIndicator.style.display = 'none';
-                }, 5000);
-            }
             
             if (video) {
-                updateStatus('Video element found, attempting to load...');
-                
-                // Force video to load
-                video.load();
-                
-                // Set up event listeners
-                video.addEventListener('loadstart', function() {
-                    updateStatus('Video started loading...');
-                });
-                
-                video.addEventListener('loadedmetadata', function() {
-                    updateStatus('Video metadata loaded');
-                });
+                console.log('Video element found');
                 
                 video.addEventListener('loadeddata', function() {
-                    updateStatus('Video data loaded - attempting to play');
-                    
-                    // Try to play the video
-                    const playPromise = video.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise
-                            .then(() => {
-                                updateStatus('Video playing successfully! 🎥');
-                            })
-                            .catch(error => {
-                                updateStatus('Autoplay blocked: ' + error.message);
-                                console.log('Autoplay was prevented:', error);
-                            });
-                    }
-                });
-                
-                video.addEventListener('canplay', function() {
-                    updateStatus('Video ready to play');
-                });
-                
-                video.addEventListener('playing', function() {
-                    updateStatus('Video is now playing! ✅');
+                    console.log('Video loaded successfully');
+                    video.play().catch(function(error) {
+                        console.log('Autoplay prevented (normal):', error);
+                    });
                 });
                 
                 video.addEventListener('error', function(e) {
-                    updateStatus('Video error: ' + (e.message || 'Unknown error'));
-                    console.log('Video error event:', e);
+                    console.log('Video error:', e);
                 });
                 
-                video.addEventListener('stalled', function() {
-                    updateStatus('Video loading stalled');
-                });
-                
-                // Ensure video loops
-                video.addEventListener('ended', function() {
-                    updateStatus('Video ended, restarting...');
-                    video.currentTime = 0;
-                    video.play();
-                });
-                
-                // Additional debugging
-                setTimeout(() => {
-                    if (video.networkState === 3) {
-                        updateStatus('Video failed to load - check file path');
-                    }
-                }, 3000);
-                
-            } else {
-                updateStatus('Video element not found!');
+                // Force load
+                video.load();
             }
         });
 
-        // Smooth scrolling for
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Gallery item interaction
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.getAttribute('data-title');
+                alert(`Viewing: ${title}\n\nThis would open a larger image or gallery in a real implementation.`);
+            });
+        });
+
+        // Blog post interaction
+        document.querySelectorAll('.blog-post').forEach(post => {
+            post.addEventListener('click', function() {
+                const title = this.querySelector('.blog-title').textContent;
+                alert(`Opening: ${title}\n\nThis would navigate to the full blog post in a real implementation.`);
+            });
+        });
+
+        // Add active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.style.color = 'var(--light-green)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
