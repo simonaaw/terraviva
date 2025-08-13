@@ -94,16 +94,6 @@
             overflow: hidden;
         }
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
         .hero-fallback {
             position: absolute;
             top: 0;
@@ -452,19 +442,6 @@
         .fade-in {
             animation: fadeInUp 0.8s ease-out;
         }
-
-        /* Video indicator */
-        .video-indicator {
-            position: absolute;
-            top: 100px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            z-index: 10;
-        }
     </style>
 </head>
 <body>
@@ -485,10 +462,7 @@
     </header>
 
     <section id="home" class="hero">
-        <!-- Video Background with indicator -->
-        <div class="video-indicator">🎥 your-farm-video.mp4 playing</div>
-        
-        <!-- Fallback background for when video is unavailable -->
+        <!-- Beautiful illustrated background showing farm landscape -->
         <div class="hero-fallback"></div>
         
         <!-- Dark overlay for better text readability -->
@@ -526,7 +500,7 @@
             <h2 class="section-title">Who We Are</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Lorenz Reichlin</h3>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Lorenz Reichlin - Founder and Farmer</h3>
                     <p>I am Lorenz Reichlin, 28 years old, striving to become a farmer of the new generation. Born and raised on a farm in Switzerland, I discovered my passion for plants early on. My parents, a game warden and primary school principal, managed our farm with a big vegetable garden alongside my three siblings.</p>
                     
                     <p>Growing up surrounded by nature, I developed a deep appreciation for sustainable living and became determined to have my own farm. I have great memories of the incredible home-grown food my mother cooked - a gift everyone should experience.</p>
@@ -543,7 +517,7 @@
                     👩‍🔬🌍
                 </div>
                 <div class="about-text">
-                    <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Simona Weber</h3>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Simona Weber - Education and Research</h3>
                     <p>I'm Simona Weber, Swiss, 26 years old, and was captivated when I first visited Costa Rica—not just by its biodiversity, but by the warmth of its people. This project represents my vision of creating harmony between people and nature through education and restoration.</p>
                     
                     <p>With a dual Master's degree in Environmental Policy and International Affairs, I joined the United Nations Environment Programme (UNEP), working on biodiversity conservation projects. I've built a global network of scientists and conservationists, using innovative tools like eDNA sequencing and satellite imagery to track progress.</p>
@@ -730,7 +704,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Finca Botón de Oro - Regenerating the Earth, One Seed at a Time</p>
-            <p>Lorenz Reichlin - Founder and Farmer | Simona Weber - Education and Research | Costa Rica</p>
+            <p>Sustainable Agriculture | Santa Teresa, Costa Rica</p>
         </div>
     </footer>
 
