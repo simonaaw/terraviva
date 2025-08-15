@@ -82,6 +82,34 @@
             color: var(--light-green);
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-switcher a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .language-switcher a:hover {
+            border-color: var(--light-green);
+            background: rgba(127, 176, 105, 0.2);
+        }
+
+        .language-switcher .active {
+            background: var(--light-green);
+            border-color: var(--light-green);
+        }
+
         /* Hero Section with Video */
         .hero {
             height: 100vh;
@@ -437,6 +465,10 @@
                 display: none;
             }
             
+            .language-switcher {
+                margin-left: auto;
+            }
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -488,6 +520,10 @@
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="language-switcher">
+                <a href="index.html" class="active">🇺🇸 EN</a>
+                <a href="index-es.html">🇪🇸 ES</a>
+            </div>
         </nav>
     </header>
 
