@@ -277,28 +277,52 @@
     transform: translateY(-5px);
 }
 
-.impact-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1rem;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
+        .impact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
 
-.impact-icon::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-}
+        .impact-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
 
+        /* Specific background images for each impact card */
+        .impact-card:nth-child(1) .impact-icon {
+            background-image: url('soil-regeneration.jpg');
+        }
+
+        .impact-card:nth-child(2) .impact-icon {
+            background-image: url('biodiversity.jpg');
+        }
+
+        .impact-card:nth-child(3) .impact-icon {
+            background-image: url('water-conservation.jpg');
+        }
+
+        .impact-card:nth-child(4) .impact-icon {
+            background-image: url('carbon-sequestration.jpg');
+        }
+
+        .impact-card:nth-child(5) .impact-icon {
+            background-image: url('circular-economy.jpg');
+        }
+
+        .impact-card:nth-child(6) .impact-icon {
+            background-image: url('progress-tracking.jpg');
+        }
 /* Specific background images for each impact card */
 .impact-card:nth-child(1) .impact-icon {
     background-image: url('soil-regeneration.jpg');
