@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finca Botón de Oro - Regenerative Agriculture in Costa Rica</title>
+    <title>Finca Limón - Regenerative Agriculture in Costa Rica</title>
     <style>
         * {
             margin: 0;
@@ -509,11 +509,11 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Finca Botón de Oro</div>
+            <div class="logo">Finca Limón</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Mission</a></li>
-                <li><a href="#who-we-are">Who We Are</a></li>
+                <li><a href="#who-I-am">Who I am</a></li>
                 <li><a href="#impact">Impact</a></li>
                 <li><a href="#goals">Goals</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -549,7 +549,7 @@
         
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Finca Botón de Oro</h1>
+                <h1>Finca Limón</h1>
                 <p>Regenerating the earth through sustainable permaculture and agroforestry in Santa Teresa, Costa Rica</p>
                 <a href="#about" class="cta-button">Discover Our Mission</a>
             </div>
@@ -561,22 +561,22 @@
             <h2 class="section-title">Mission</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Finca Botón de Oro embodies the principles of sustainable farming, pursuing a permaculture agroforestry approach. Our primary goal is to reforest, regenerate, and enrich topsoil, thereby contributing positively to nature while also harvesting produce.</p>
+                    <p>Finca Limón embodies the principles of sustainable farming, pursuing a permaculture agroforestry approach. Our primary goal is to reforest, regenerate, and enrich topsoil, thereby contributing positively to nature while also harvesting produce.</p>
                     
                     <p>Located in the booming town of Santa Teresa de Cobano, renowned for its surf culture and high demand for sustainable, quality food, we're perfectly positioned to serve private chefs, restaurants, and local farmers' markets.</p>
                     
                     <p>We also organize events and workshops designed to welcome visitors who wish to learn about and engage with sustainable farming practices, creating a bridge between traditional agriculture and regenerative methods.</p>
                 </div>
                 <div class="about-image">
-                   <img src="about-photo.jpeg" alt="Finca Botón de Oro" id="aboutImage">
+                   <img src="about-photo.jpeg" alt="Finca Limón" id="aboutImage">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="who-we-are">
+    <section id="who-I-am">
         <div class="container">
-            <h2 class="section-title">Who We Are</h2>
+            <h2 class="section-title">Who I am</h2>
             <div class="about-content">
                 <div class="about-image">
                      <img src="lorenz-photo.jpeg" alt="Lorenz Reichlin" id="lorenzImage">
@@ -590,21 +590,7 @@
                     <p>To fund my dream of traveling and saving for this ultimate goal, I worked on construction sites in Switzerland, acquiring valuable manual skills in construction and landscape design that now serve my farming endeavors.</p>
                 </div>
             </div>
-            
-            <div class="about-content" style="margin-top: 4rem;">
-                <div class="about-text">
-                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Simona Weber - Education and Research</h3>
-                    <p>I'm Simona Weber, Swiss, 26 years old, and was captivated when I first visited Costa Rica—not just by its biodiversity, but by the warmth of its people. This project represents my vision of creating harmony between people and nature through education and restoration.</p>
-                    
-                    <p>With a dual Master's degree in Environmental Policy and International Affairs, I joined the United Nations Environment Programme (UNEP), working on biodiversity conservation projects.</p>
-                    
-                    <p>Through this work, I realized we must transform agriculture into regenerative practices. At Finca Botón de Oro, I focus on education—sharing knowledge through workshops, research documentation, and creating learning opportunities that bridge science with sustainable farming practices. To track progress, we use innovative tools like eDNA sequencing and satellite imagery.</p>
-                </div>
-                <div class="about-image">
-                    <img src="simona-photo.jpeg" alt="Simona Weber" id="simonaImage">
-                </div>
-            </div>
-        </div>
+        
     </section>
 
     <section id="impact">
@@ -782,7 +768,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Finca Botón de Oro - Regenerating the Earth, One Seed at a Time</p>
+            <p>&copy; 2025 Finca Limón - Regenerating the Earth, One Seed at a Time</p>
             <p>Sustainable Agriculture | Santa Teresa, Costa Rica</p>
         </div>
     </footer>
@@ -809,20 +795,6 @@
                 // Force load
                 video.load();
             }
-            
-            // Handle Simona's image
-            const simonaImg = document.getElementById('simonaImage');
-            if (simonaImg) {
-                simonaImg.addEventListener('error', function() {
-                    console.log('Simona image failed to load, showing fallback');
-                    this.parentElement.innerHTML = '👩‍🔬🌍';
-                });
-                
-                simonaImg.addEventListener('load', function() {
-                    console.log('Simona image loaded successfully');
-                });
-            }
-        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
