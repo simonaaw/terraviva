@@ -271,80 +271,64 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.impact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+.impact-card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .impact-card:hover {
     transform: translateY(-5px);
 }
 
-        .impact-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            border-radius: 10px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
+.impact-card:hover::before {
+    background: rgba(255, 255, 255, 0.75);
+}
 
-        .impact-icon::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-        }
+/* Remove the small icon styling */
+.impact-icon {
+    display: none;
+}
 
-        /* Specific background images for each impact card */
-        .impact-card:nth-child(1) .impact-icon {
-            background-image: url('soil-regeneration.jpg');
-        }
-
-        .impact-card:nth-child(2) .impact-icon {
-            background-image: url('biodiversity.jpg');
-        }
-
-        .impact-card:nth-child(3) .impact-icon {
-            background-image: url('water-conservation.jpg');
-        }
-
-        .impact-card:nth-child(4) .impact-icon {
-            background-image: url('carbon-sequestration.jpg');
-        }
-
-        .impact-card:nth-child(5) .impact-icon {
-            background-image: url('circular-economy.jpg');
-        }
-
-        .impact-card:nth-child(6) .impact-icon {
-            background-image: url('progress-tracking.jpg');
-        }
 /* Specific background images for each impact card */
-.impact-card:nth-child(1) .impact-icon {
+.impact-card:nth-child(1) {
     background-image: url('soil-regeneration.jpg');
 }
 
-.impact-card:nth-child(2) .impact-icon {
+.impact-card:nth-child(2) {
     background-image: url('biodiversity.jpg');
 }
 
-.impact-card:nth-child(3) .impact-icon {
+.impact-card:nth-child(3) {
     background-image: url('water-conservation.jpg');
 }
 
-.impact-card:nth-child(4) .impact-icon {
+.impact-card:nth-child(4) {
     background-image: url('carbon-sequestration.jpg');
 }
 
-.impact-card:nth-child(5) .impact-icon {
+.impact-card:nth-child(5) {
     background-image: url('circular-economy.jpg');
 }
 
-.impact-card:nth-child(6) .impact-icon {
+.impact-card:nth-child(6) {
     background-image: url('progress-tracking.jpg');
 }
 
