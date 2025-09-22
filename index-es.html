@@ -251,38 +251,87 @@
             border-radius: 20px;
         }
 
-        /* Impact Grid */
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
+/* Impact Grid */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
 
-        .impact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
+.impact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-        .impact-card:hover {
-            transform: translateY(-5px);
-        }
+.impact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 1;
+}
 
-        .impact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+.impact-card > * {
+    position: relative;
+    z-index: 2;
+}
 
-        .impact-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+.impact-card:hover {
+    transform: translateY(-5px);
+}
 
+.impact-card:hover::before {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove the small icon styling */
+.impact-icon {
+    display: none;
+}
+
+/* Specific background images for each impact card */
+.impact-card:nth-child(1) {
+    background-image: url('soil-regeneration.jpg');
+}
+
+.impact-card:nth-child(2) {
+    background-image: url('biodiversity.jpg');
+}
+
+.impact-card:nth-child(3) {
+    background-image: url('water-conservation.jpg');
+}
+
+.impact-card:nth-child(4) {
+    background-image: url('carbon-sequestration.jpg');
+}
+
+.impact-card:nth-child(5) {
+    background-image: url('circular-economy.jpg');
+}
+
+.impact-card:nth-child(6) {
+    background-image: url('progress-tracking.jpg');
+}
+
+.impact-card h3 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
         /* Goals Section */
         .goals-container {
             display: grid;
@@ -591,44 +640,37 @@
     <section id="impact">
         <div class="container">
             <h2 class="section-title">Impacto Ambiental</h2>
-            <div class="impact-grid">
-                <div class="impact-card">
-                    <div class="impact-icon">🌱</div>
-                    <h3>Regeneración del Suelo</h3>
-                    <p>Imitando ecosistemas naturales mediante la integración de plantas nativas y cultivadas para rejuvenecer suelos agotados y crear tierra superficial sostenible rica en materia orgánica.</p>
-                </div>
-                
-                <div class="impact-card">
-                    <div class="impact-icon">🦋</div>
-                    <h3>Mejora de la Biodiversidad</h3>
-                    <p>Creando ecosistemas equilibrados con más de 350 árboles nativos plantados, apoyando la vida silvestre local y estableciendo bosques alimentarios como centros productivos de biodiversidad.</p>
-                </div>
-                
-                <div class="impact-card">
-                    <div class="impact-icon">💧</div>
-                    <h3>Conservación del Agua</h3>
-                    <p>Implementando sistemas de recolección de agua, zanjas de infiltración y métodos naturales de infiltración para mantener suelos saludables y reducir la demanda en suministros locales de agua.</p>
-                </div>
-                
-                <div class="impact-card">
-                    <div class="impact-icon">🌍</div>
-                    <h3>Secuestro de Carbono</h3>
-                    <p>La vegetación densa y los bosques alimentarios de múltiples capas maximizan la fotosíntesis, con reciclaje de biomasa a través de compostaje para almacenamiento eficiente de carbono.</p>
-                </div>
-                
-                <div class="impact-card">
-                    <div class="impact-icon">♻️</div>
-                    <h3>Economía Circular</h3>
-                    <p>Enfoque de cero residuos usando construcción sostenible, sistemas de compostaje y trabajando con ciclos naturales para convertir desechos en recursos valiosos.</p>
-                </div>
-                
-                <div class="impact-card">
-                    <div class="impact-icon">📈</div>
-                    <h3>Progreso Medible</h3>
-                    <p>Transformación ya visible después de un año, con más de 100 especies plantadas, más de 60 sobreviviendo, y monitoreo continuo a través de imágenes satelitales y seguimiento de biodiversidad.</p>
-                </div>
-            </div>
-        </div>
+<div class="impact-grid">
+    <div class="impact-card">
+        <h3>Soil Regeneration</h3>
+        <p>Mimicking natural ecosystems by integrating native and cultivated plants to rejuvenate depleted soil and create sustainable topsoil rich in organic matter.</p>
+    </div>
+    
+    <div class="impact-card">
+        <h3>Biodiversity Enhancement</h3>
+        <p>Creating balanced ecosystems with 350+ native trees planted, supporting local wildlife and establishing food forests as productive biodiversity hubs.</p>
+    </div>
+    
+    <div class="impact-card">
+        <h3>Water Conservation</h3>
+        <p>Implementing water harvesting systems, swales, and natural infiltration methods to maintain healthy soil and reduce demand on local water supplies.</p>
+    </div>
+    
+    <div class="impact-card">
+        <h3>Carbon Sequestration</h3>
+        <p>Dense vegetation and multi-layered food forests maximize photosynthesis, with biomass recycling through composting for efficient carbon storage.</p>
+    </div>
+    
+    <div class="impact-card">
+        <h3>Circular Economy</h3>
+        <p>Zero waste approach using sustainable construction, composting systems, and working with natural cycles to turn waste into valuable resources.</p>
+    </div>
+    
+    <div class="impact-card">
+        <h3>Measurable Progress</h3>
+        <p>Already visible transformation after one year, with 100+ species planted, 60+ surviving, and continuous monitoring through satellite imagery and biodiversity tracking.</p>
+    </div>
+</div>
     </section>
 
     <section id="goals">
